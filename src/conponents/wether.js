@@ -4,24 +4,30 @@ import axios from "axios"
 
 
 function Wetherapp() {
-    const [wether, setWether] = useState(null);
-    const [loding, setLoding] = useState(false);
-
+    const [wether, setWether] = useState([]);
 
     const getData = async () => {
-      const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=patna&appid=d0f85e26df7c7a0773b2b695bed6fc0e`);
+        let city_name="patna";
+        const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=d0f85e26df7c7a0773b2b695bed6fc0e`);
+    //   const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=patna&appid=d0f85e26df7c7a0773b2b695bed6fc0e`);
       return response.data;
     };
 
     useEffect(() => {
       setTimeout(() => {
-        getData().then((text) => console.log(text));
+        // getData().then((text) => console.log(text));
+        getData().then((text) => setWether(text));
       }, 3000);
       },[]);
 
     return (
       <div>
-        <h1>Weather</h1>
+
+        let city_name="patna";
+        const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=d0f85e26df7c7a0773b2b695bed6fc0e`);
+
+        <h1>{wether.base}</h1>
+        <h1>{wether.name}</h1>
       </div>
       
     );
