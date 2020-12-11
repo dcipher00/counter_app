@@ -4,6 +4,7 @@ import axios from "axios"
 
 function Wetherapp() {
     const [wether, setWether] = useState([]);
+    const [inputval, setInputVal] = useState("");
 
     const getData = async () => {
         let city_name="patna";
@@ -11,6 +12,10 @@ function Wetherapp() {
     //   const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=patna&appid=d0f85e26df7c7a0773b2b695bed6fc0e`);
       return response.data;
     };
+    
+    const handleChange=(e)=>{
+        console.log(e.target.value);
+    }
 
     useEffect(() => {
       setTimeout(() => {
@@ -21,13 +26,10 @@ function Wetherapp() {
 
     return (
       <div>
-         <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+         <form onSubmit={handleSubmit}>
+          <input type="text" value={inputVal} onChange={handleChange} />
+            <input type="submit" value="Submit" />
+           </form>
         <h1>{wether.base}</h1>
         <h1>{wether.name}</h1>
       </div>
