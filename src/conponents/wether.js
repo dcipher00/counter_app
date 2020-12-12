@@ -19,6 +19,7 @@ function Wetherapp() {
 
     const handleSubmit = (evt) => {
       evt.preventDefault();
+      console.log(e.target.value);
       alert(`Submitting Name ${name}`)
   }
 
@@ -31,19 +32,19 @@ function Wetherapp() {
 
     return (
       <div>
-         <form onSubmit={handleSubmit}>
-      <label>
-        City Name:
-        <input
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
-        <h1>{wether.base}</h1>
-        <h1>{wether.name}</h1>
+        <form onSubmit={handleSubmit}>
+            <label>
+              City Name:
+              <input
+                type="text"
+                value={name}
+                onChange={e => setName(e.target.value)}
+              />
+            </label>
+            <input type="submit" value="Submit" />
+        </form>
+          {/* <h1>{wether.base}</h1>
+          <h1>{wether.name}</h1> */}
       </div>
     );
   }
