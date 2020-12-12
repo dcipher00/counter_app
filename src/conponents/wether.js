@@ -8,6 +8,7 @@ function Wetherapp() {
     const [wether, setWether] = useState([]);
     const [inputval, setInputVal] = useState("");
 
+
     const getData = async () => {
         let city_name="patna";
         const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=d0f85e26df7c7a0773b2b695bed6fc0e`);
@@ -18,9 +19,10 @@ function Wetherapp() {
         console.log(e.target.value);
     }
 
-    const handleSubmit=(e)=>{
-        
-    }
+    handleSubmit=(e)=>{
+        alert('City: ' + this.state.value);
+    
+      }
 
     useEffect(() => {
       setTimeout(() => {
