@@ -6,10 +6,10 @@ import axios from "axios"
 function Wetherapp() {
     const [wether, setWether] = useState([]);
     const [name, setName] = useState("");
+    const [cityName,setCityName] = useState("Jaipur");
 
     const getData = async () => {
-        let setName="patna";
-        const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${setName}&appid=d0f85e26df7c7a0773b2b695bed6fc0e`);
+        const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=d0f85e26df7c7a0773b2b695bed6fc0e`);
       return response.data;
     };
 
@@ -19,8 +19,7 @@ function Wetherapp() {
 
     const handleSubmit = (evt) => {
       evt.preventDefault();
-      console.log(e.target.value);
-      alert(`Submitting Name ${name}`)
+        cityName=name;
   }
 
     useEffect(() => {
@@ -28,7 +27,7 @@ function Wetherapp() {
         // getData().then((text) => console.log(text));
         getData().then((text) => setWether(text));
       }, 3000);
-      },[]);
+      },[cityName]);
 
     return (
       <div>
